@@ -1,0 +1,21 @@
+Copy code
+# Python
+*.pyc
+__pycache__/
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environment
+env/
+
+# Django
+*.log
+db.sqlite3
+media/
+
+# IDEs
+.idea/
+.vscode/

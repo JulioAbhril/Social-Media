@@ -1,0 +1,41 @@
+
+{% load static %}
+
+
+
+<ul class="p-4">
+    <li>
+      <a
+        href="{% url 'users:profile' user.username %}"
+        class="flex items-center space-x-2 p-2 hover:bg-gray-200 rounded-lg transition-all "
+      >
+       <img src=  "{{user.profile.picture.url}}" alt="Profile picture" class="w-10 h-10 rounded-full"/>
+        <span class="font-semibold">{{user.username}}</span>
+      </a>
+    </li>
+    <li>
+      <a
+        href="friends.html"
+        class="flex items-center space-x-2 p-6 hover:bg-gray-200 rounded-lg transition-all "
+        ><i class='bx bxs-group'></i>
+        <span class="font-semibold">Friends</span></a
+      >
+    </li>
+    <li>
+      <a
+        href="#"
+        class="flex items-center space-x-2 p-2 hover:bg-gray-200 rounded-lg transition-all "
+        ><img
+          src="{% static 'img/video.jpeg'%}"
+          alt="Profile picture"
+          class="w-10 h-10 rounded-full"
+        />
+        <div class="font-semibold">Watch <br> 
+          <span class="font-semibold text-sm text-blue-500 justify-between relative">
+          </span>
+        </div> 
+        
+      </a>
+    </li>
+    <li class="border-b border-gray-200 mt-6"></li>
+</ul>

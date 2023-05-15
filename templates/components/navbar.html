@@ -1,0 +1,150 @@
+{% load static %}
+<nav
+  class="bg-white h-max md:h-14 w-full shadow flex flex-col md:flex-row items-center justify-center md:justify-between fixed top-0 z-0 border-b "
+>
+  <!-- NAV LEFT -->
+  <div class="flex items-center justify-between w-full md:w-max px-4 py-2">
+    <a href="#" class="mr-2 hidden md:inline-block">
+      <img
+        src="{% static 'img/logo.jpeg'%}"
+        alt="logo"
+        class="w-24 sm:w-20 lg:w-10 h-auto"
+      />
+    </a>
+    <a href="#" class="inline-block md:hidden">
+      <img src="{{user.profile.picture.url}}" alt="" class="w-10 h-10" />
+    </a>
+    <div class="flex items-center justify-between space-x-1">
+      <div
+        class="relative bg-gray-100 px-2 py-2 w-10 h-10 sm:w-11 sm:h-11 lg:h-10 lg:w-10 xl:w-max xl:pl-3 xl:pr-8 rounded-full flex items-center justify-center cursor-pointer"
+      >
+        <i
+          class="bx bx-search-alt-2 text-xl xl:mr-2"
+        ></i>
+        <input
+          type="text"
+          placeholder="Search..."
+          class="outline-none bg-transparent hidden xl:inline-block border-none"
+        />
+      </div>
+      <div
+        class="text-2xl grid place-items-center md:hidden bg-gray-200 rounded-full w-10 h-10 cursor-pointer hover:bg-gray-300 relative"
+      >
+        <i class="bx bxl-messenger"></i>
+        <span
+          class="text-xs absolute top-0 right-0 bg-red-500 text-white font-semibold rounded-full px-1 text-center"
+          >2</span
+        >
+      </div>
+      <div
+        class="text-2xl grid place-items-center md:hidden bg-gray-200 rounded-full w-10 h-10 cursor-pointer hover:bg-gray-300 "
+        id=""
+      >
+        <i class="bx bxs-moon"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV CENTER -->
+  <ul class="flex w-full lg:w-max items-center justify-center">
+    <li class="w-1/5 md:w-max text-center">
+      <a
+        href="#"
+        class="w-full text-3xl py-2 px-3 xl:px-12 cursor-pointer text-center inline-block text-blue-500 border-b-4 border-blue-500"
+      >
+        <i class="bx bxs-home"></i>
+      </a>
+    </li>
+
+    <li class="w-1/5 md:w-max text-center">
+      <a
+        href="#" 
+        class="w-full text-3xl py-2 px-3 xl:px-12 cursor-pointer text-center inline-block rounded text-gray-600 hover:bg-gray-100 relative"
+      >
+        <i class="bx bx-group"></i>
+      </a>
+    </li>
+
+    <li class="w-1/5 md:w-max text-center inline-block md:hidden">
+      <a
+        href="#"
+        class="w-full text-3xl py-2 px-3 xl:px-12 cursor-pointer text-center inline-block rounded text-gray-600 hover:bg-gray-100 relative"
+      >
+        <i class="bx bx-bell"></i>
+        <span
+          class="text-xs absolute top-0 right-1/4 bg-red-500 text-white font-semibold rounded-full px-1 text-center"
+          >9+</span
+        >
+      </a>
+    </li>
+
+    <li class="w-1/5 md:w-max text-center inline-block xl:hidden">
+      <a
+        href="#"
+        class="w-full text-3xl py-2 px-3 xl:px-12 cursor-pointer text-center inline-block rounded text-gray-600 hover:bg-gray-100 relative"
+      >
+        <i class="bx bx-menu"></i>
+      </a>
+    </li>
+  </ul>
+
+   
+  <!-- NAV RIGHT -->
+  <ul class="hidden md:flex mx-4 items-center justify-center">
+    {% if not user.authenticated %}
+    <li class="h-full hidden xl:flex">
+      <a href="{% url 'account_login' %}" class="inline-flex items-center justify-center p-1 rounded-full hover:bg-gray-200>
+        <span class="mx-2 font-semibold ">Login</span>
+      </a>
+      <a href="{% url 'account_signup' %}" class="inline-flex items-center justify-center p-1 rounded-full hover:bg-gray-200>
+        <span class="mx-2 font-semibold ">Register</span>
+      </a>
+    </li>
+    {% else %}
+    
+    <li class="h-full hidden xl:flex">
+      <a
+        href="https://www.facebook.com/shanedelmoira.mantua.7"
+        class="inline-flex items-center justify-center p-1 rounded-full hover:bg-gray-200 mx-1"
+      >
+        <img
+          src="{{user.profile.picture.url}}"
+          alt="Profile picture"
+          class="rounded-full h-7 w-7"
+        />
+        <span class="mx-2 font-semibold ">Julio Hernández López</span>
+      </a>
+    </li>
+
+
+    <li>
+      <!--  last option    -->
+      <div x-data="{open:false}">
+        <div @click="open=true"
+          class="text-xl grid place-items-center bg-gray-200 rounded-full mx-1 p-3 cursor-pointer hover:bg-gray-300 relative">
+          <i class="bx bxs-bell"></i>
+          <spanclass="text-xs absolute top-0 right-0 bg-red-500 text-white font-semibold rounded-full px-1 text-center"></spanclass=>
+        </div>
+
+        <div x-show="open" @click.away="open=false" class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+          <div class="py-1" role="none">
+            <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+            <a href="#" class="text-gray-700 block px-2 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Account settings</a>
+            <a href="#" class="text-gray-700 block px-2 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
+            <a href="#" class="text-gray-700 block px-2 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">License</a>
+            <form method="POST" action="#" role="none">
+              <button type="submit" class="text-gray-700 block w-full px-4 py-2 text-left text-sm" role="menuitem" tabindex="-1" id="menu-item-3">Sign out</button>
+            </form>
+          </div>
+        </div>  
+      </div>
+
+    </li>
+    {% endif %}
+    
+  </ul>
+  <!-- End -->
+
+  
+
+</nav>
