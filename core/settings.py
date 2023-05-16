@@ -39,14 +39,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 #to run in docker
 SECRET_KEY = 'django-insecure-fc7&3y6bhmnyli_e9-8$9$!1+^2749)ncdjfzm=l5(i@_6^y5$'
-DEBUG = os.environ.get('DEBUG')
+#DEBUG = os.environ.get('DEBUG')
 DATABASE_URL = os.environ.get('DATABASE_URL')
 
 
 #to run in local
 
 # SECRET_KEY = 'django-insecure-fc7&3y6bhmnyli_e9-8$9$!1+^2749)ncdjfzm=l5(i@_6^y5$'#os.environ.get('SECRET_KEY')
-# DEBUG ='RENDER' not in os.environ
+DEBUG ='RENDER' not in os.environ
 
 ALLOWED_HOSTS = [
     '*'
