@@ -33,8 +33,37 @@ Ahora que contamos con un entorno aislado, podremos instalar las dependencias ne
     brew services start postgresql
 
 	brew install libpq
+	
+### Nota importante
+
+En algunos sistemas operativos no se tiene instalado **pg_config**, en ese caso es necesario lo instales, ya que si no lo haces, te puede aparecer el siguiente error:
+
+![image](https://github.com/JulioAbhril/Social-Media/assets/133718524/b824482d-2932-49a8-9ffe-fdec4db9e494)
+
+Para instalarlo, has lo siguiente:
+Debian/ ubuntu
+
+    sudo apt-get update sudo apt-get install libpq-dev
+   
+ 
+Fedora
+
+    sudo dnf install postgresql-devel
+
+MacOs:
+     brew install postgresql
+
+
+
+También puedes intentar instalar postgresql antes de los requerimientos.
+    sudo apt install postgresql
+
+El motivo es porque psycopg2 es un controlador de PostgreSQL.
+
 
 	
+"si deseas saber más sobre pg":
+https://www.postgresql.org/docs/current/app-pgconfig.html
 
 ## Instalar PostgresSQL
 Dando por hecho que se tiene instalado homebrew, ejecuta el siguiente comando: 
